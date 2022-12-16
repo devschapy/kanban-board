@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import ITEM_TYPE from "../data/types";
 
@@ -48,9 +48,12 @@ const Item = ({ item, index, moveItem, status }) => {
             <div
                 ref={ref}
                 style={{ opacity: isDragging ? 0 : 1 }}
-                className={"item"}
+                className={`taskItem 
+                ${status.status === 'open' ? 'bg-blue-50 border-blue-200 border' : '' ||
+                        status.status === 'in progress' ? 'bg-yellow-50 border-yellow-200 border' : '' ||
+                            status.status === 'done' ? 'bg-green-50 border-green-200 border' : ''}}`}
             >
-                <p className={"item-title"}>{item.content}</p>
+                <p className={"text-gray-700 text-center"}>{item.content}</p>
             </div>
         </Fragment>
     );

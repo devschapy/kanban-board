@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import Item from "../components/Item";
 import DropWrapper from "../components/DropWrapper";
 import Col from "../components/Col";
-import { data, statuses } from "../data";
+import { statuses } from "../data";
 import CreateTask from "../components/CreateTask";
 import Header from "../components/common/Header";
+import ColTitle from "../components/ColTitle";
 
 const TaskManage = () => {
     const [items, setItems] = useState([{
@@ -54,13 +55,13 @@ const TaskManage = () => {
             <Header />
             <CreateTask onTaskAdd={createNewTaskHandler} />
 
-            <div className={"row"}>
+            <div className={"flex justify-center gap-10"}>
                 {statuses.map(s => {
                     return (
-                        <div className={"col-wrapper"}>
-                            <h2 className={"col-header"}>{s.status.toUpperCase()}</h2>
+                        <div key={s.status} className={"relative bg-gray-50 rounded-md pt-16 px-4 py-2 shadow-md "}>
+                            <ColTitle Style={s.status}>{s.status.toUpperCase()}</ColTitle>
                             <DropWrapper onDrop={onDrop} status={s.status}>
-                                <Col>
+                                <Col status={s.status}>
                                     {items
                                         .filter(i => i.status === s.status)
                                         .map((i, idx) => <Item key={i.id} item={i} index={idx} moveItem={moveItem} status={s} />)
