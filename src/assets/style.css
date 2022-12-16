@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap");
+  html {
+    font-family: "Noto Sans Bengali", sans-serif;
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto w-11/12 md:w-10/12;
+  }
+  .headerNavLink.active {
+    @apply text-blue-500 after:bg-blue-400 after:w-full after:opacity-100 duration-300;
+  }
+  .nav-after {
+    @apply after:absolute after:opacity-0 hover:after:opacity-100 after:h-0.5 after:w-1 hover:after:w-full after:left-0 after:duration-500 after:bg-green-400 sm:after:-bottom-3.5 after:-bottom-2.5;
+  }
+  .btn {
+    @apply px-8 bg-white text-green-400 font-semibold text-lg border border-green-100 rounded-md shadow-sm hover:bg-green-400 hover:text-white focus:bg-green-400 focus:text-white duration-300 hover:scale-105 focus:scale-105;
+  }
+  .inputStyle {
+    @apply bg-white py-3 px-4 rounded-md w-full shadow-sm focus:outline-none border border-green-100 hover:border-green-200 focus:border-green-200 text-gray-700 placeholder:text-gray-300;
+  }
+}
