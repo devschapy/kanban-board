@@ -1,17 +1,19 @@
-import React, {useState} from "react";
+import React from "react";
 import Input from "./form/Input";
 import Button from "./buttons/Button";
+import { addTask } from "../store/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
 
+const CreateTask = ({ onTaskAdd }) => {
+  const dispatch = useDispatch();
+  const { item } = useSelector(state => state);
 
-const CreateTask = ({onTaskAdd}) => {
-  const [task, setTask] = useState('');
-  const onChangeHandler = (e) => setTask(e.target.value);
+  const onChangeHandler = (e) => dispatch(addTask(e.target.value));
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const newTask = { id: Math.random().toString(), content: task, status: "open", };
+    const newTask = { id: Math.random().toString(), content: item, status: "open", };
     onTaskAdd(newTask);
-    setTask('');
   };
 
   return (
@@ -26,7 +28,7 @@ const CreateTask = ({onTaskAdd}) => {
           type="text"
           divStyle="md:w-6/12"
           placeholder="Write your task ..."
-          value={task}
+          value={item}
         />
         <Button type="submit" text="Add Task" />
       </div>

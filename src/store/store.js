@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from "redux";
-import taskReducer from "./services/reducers/reducers";
+import taskReducer from "./reducers/reducers";
 
 // const rootReducer = combineReducers({
 //   taskReducer: taskReducer,

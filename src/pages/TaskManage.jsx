@@ -1,54 +1,32 @@
-import React, { useState } from "react";
-import Item from "../components/Item";
-import DropWrapper from "../components/DropWrapper";
-import Col from "../components/Col";
+import React from "react";
 import { statuses } from "../data";
-import CreateTask from "../components/CreateTask";
-import Header from "../components/common/Header";
+import Col from "../components/Col";
+import Item from "../components/Item";
 import ColTitle from "../components/ColTitle";
+import Header from "../components/common/Header";
+import CreateTask from "../components/CreateTask";
+import DropWrapper from "../components/DropWrapper";
+import { useSelector, useDispatch } from "react-redux";
+import { addTaskList, moveTask, dropNewTask } from "../store/actions/actions";
 
 const TaskManage = () => {
-    const [items, setItems] = useState([{
-        id: 1,
-        status: "open",
-        title: "Human Interest Form",
-        content: "Fill out human interest distribution form",
-    },
-    {
-        id: 2,
-        status: "open",
-        title: "Purchase present",
-        content: "Get an anniversary gift",
-    },]);
+    const dispatch = useDispatch();
+    const { items } = useSelector(state => state);
 
     const onDrop = (item, monitor, status) => {
-        const mapping = statuses.find(si => si.status === status);
-
-        setItems(prevState => {
-            const newItems = prevState
-                .filter(i => i.id !== item.id)
-                .concat({ ...item, status, icon: mapping.icon });
-            return [...newItems];
-        });
+        const newItems = items.filter(i => i.id !== item.id).concat({ ...item, status })
+        dispatch(dropNewTask(newItems));
     };
 
     const moveItem = (dragIndex, hoverIndex) => {
         const item = items[dragIndex];
-        setItems(prevState => {
-            const newItems = prevState.filter((i, idx) => idx !== dragIndex);
-            newItems.splice(hoverIndex, 0, item);
-            return [...newItems];
-        });
+
+        const newItems = items.filter((i, idx) => idx !== dragIndex);
+        newItems.splice(hoverIndex, 0, item);
+        dispatch(moveTask(newItems));
     };
 
-    const createNewTaskHandler = (task) => {
-        console.log(task);
-        setItems(prevState => {
-            return [...prevState, task];
-            // const newItems = prevState.concat(task);
-            // return [ ...newItems ];
-        });
-    }
+    const createNewTaskHandler = (task) => dispatch(addTaskList(task));
 
     return (
         <main>
