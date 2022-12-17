@@ -11,7 +11,7 @@ const Home = () => {
         <div className="grid justify-center gap-6">
           <h2 className='text-center text-gray-700 font-bold text-4xl'>Wellcome <br /> Manage your tasks effortlessly</h2>
 
-          <NavLink to='/task' className='bg-green-400 py-3 px-5 rounded-md shadow-lg block w-fit justify-self-center text-white font-bold hover:scale-110 duration-300'>Go To Task Manage Page</NavLink>
+          <NavLink to='/task' className='bg-green-400 py-3 px-5 rounded-md shadow-lg block w-fit justify-self-center text-white font-bold hover:scale-110 duration-300'>Go To Manage Your Task</NavLink>
         </div>
       </div>
     </main>
