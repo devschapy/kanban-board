@@ -1,5 +1,6 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
+import Window from "./Window";
 import ITEM_TYPE from "../data/types";
 
 const Item = ({ item, index, moveItem, status }) => {
@@ -41,6 +42,11 @@ const Item = ({ item, index, moveItem, status }) => {
             isDragging: monitor.isDragging()
         })
     });
+
+    const [show, setShow] = useState(false);
+    const onOpen = () => setShow(true);
+    const onClose = () => setShow(false);
+
     drag(drop(ref));
 
     return (
@@ -48,13 +54,17 @@ const Item = ({ item, index, moveItem, status }) => {
             <div
                 ref={ref}
                 style={{ opacity: isDragging ? 0 : 1 }}
+                onClick={onOpen}
                 className={`taskItem 
                 ${status.status === 'open' ? 'bg-blue-50 border-blue-200 border' : '' ||
                         status.status === 'in progress' ? 'bg-yellow-50 border-yellow-200 border' : '' ||
                             status.status === 'done' ? 'bg-green-50 border-green-200 border' : ''}}`}
             >
                 <p className={"text-gray-700 text-center"}>{item.content}</p>
+                <p className="absolute top-1 right-1 cursor-pointer">{status.icon}</p>
             </div>
+
+            <Window onClose={onClose} item={item} show={show} />
         </Fragment>
     );
 };

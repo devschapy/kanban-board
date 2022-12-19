@@ -1,19 +1,19 @@
 import React from "react";
 import Modal from "react-modal";
 
-Modal.setAppElement("#app");
+// Modal.setAppElement("#app");
 
 const Window = ({ show, onClose, item }) => {
     return (
         <Modal
             isOpen={show}
             onRequestClose={onClose}
-            className={"modal"}
-            overlayClassName={"overlay"}
+            className={"bg-white rounded-md mt-14 mb-20 w-[800px] w-min-[450px] p-5"}
+            overlayClassName={"flex justify-center fixed z-50 inset-0 bg-black bg-opacity-50"}
         >
-            <div className={"close-btn-ctn"}>
+            <div className={"flex"}>
                 <h1 style={{ flex: "1 90%" }}>{item.title}</h1>
-                <button className="close-btn" onClick={onClose}>X</button>
+                <button className="h-10 w-9 text-xl text-gray-800 rounded-lg" onClick={onClose}>X</button>
             </div>
             <div>
                 <h2>Description</h2>

@@ -30,10 +30,10 @@
     @apply bg-white py-3 px-4 rounded-md w-full shadow-sm focus:outline-none border border-green-100 hover:border-green-200 focus:border-green-200 text-gray-700 placeholder:text-gray-300;
   }
   .colTitle {
-    @apply absolute w-full left-0 top-0 border-b py-3 rounded-t  text-center text-2xl text-gray-600 z-20;
+    @apply absolute w-full left-0 top-0 border-b py-3 rounded-t  text-center text-2xl text-gray-600 z-10;
   }
   .taskItem {
-    @apply cursor-move rounded-md shadow-md px-3 py-2 border;
+    @apply cursor-move rounded-md shadow-md px-3 py-2 border relative;
   }
   
 
