@@ -1,11 +1,15 @@
 import React, { Fragment, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dropNewTask } from "../store/actions/actions";
 import { useDrag, useDrop } from "react-dnd";
-import Window from "./Window";
 import ITEM_TYPE from "../data/types";
+import Window from "./Window";
 
 const Item = ({ item, index, moveItem, status }) => {
-    const ref = useRef(null);
+    const { items } = useSelector(state => state);
+    const dispatch = useDispatch();
 
+    const ref = useRef(null);
     const [, drop] = useDrop({
         accept: ITEM_TYPE,
         hover(item, monitor) {
@@ -42,12 +46,17 @@ const Item = ({ item, index, moveItem, status }) => {
             isDragging: monitor.isDragging()
         })
     });
+    drag(drop(ref));
+
+
+    const deleteHandler = () => {
+        const newItems = items.filter(i => i.id !== item.id);
+        dispatch(dropNewTask(newItems));
+    }
 
     const [show, setShow] = useState(false);
-    const onOpen = () => setShow(true);
     const onClose = () => setShow(false);
-
-    drag(drop(ref));
+    const onOpen = () => setShow(true);
 
     return (
         <Fragment>
@@ -61,7 +70,11 @@ const Item = ({ item, index, moveItem, status }) => {
                             status.status === 'done' ? 'bg-green-50 border-green-200 border' : ''}}`}
             >
                 <p className={"text-gray-700 text-center"}>{item.content}</p>
-                <p className="absolute top-0.5 right-0.5 text-[10px] cursor-pointer">{status.icon}</p>
+                <p className="absolute top-0 left-0.5 text-[10px] cursor-pointer">{status.icon}</p>
+
+                <button onClick={() => deleteHandler()}
+                    className="absolute top-0 right-0.5 text-[8px] cursor-pointer z-20 hover:scale-125 duration-300">❌</button>
+
             </div>
 
             <Window onClose={onClose} item={item} show={show} icon={status.icon} />
