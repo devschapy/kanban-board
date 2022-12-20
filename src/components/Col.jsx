@@ -6,7 +6,7 @@ const Col = ({ isOver, status, children }) => {
             status === 'done' ? 'bg-green-100 duration-300' : ''}` : null;
 
     return (
-        <div className={`${className} min-h-[300px] max-w-[300px] w-[300px] space-y-3`}>
+        <div className={`${className} min-h-[300px] space-y-3`}>
             {children}
         </div>
     );

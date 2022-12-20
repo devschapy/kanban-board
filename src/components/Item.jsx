@@ -61,10 +61,10 @@ const Item = ({ item, index, moveItem, status }) => {
                             status.status === 'done' ? 'bg-green-50 border-green-200 border' : ''}}`}
             >
                 <p className={"text-gray-700 text-center"}>{item.content}</p>
-                <p className="absolute top-1 right-1 cursor-pointer">{status.icon}</p>
+                <p className="absolute top-0.5 right-0.5 text-[10px] cursor-pointer">{status.icon}</p>
             </div>
 
-            <Window onClose={onClose} item={item} show={show} />
+            <Window onClose={onClose} item={item} show={show} icon={status.icon} />
         </Fragment>
     );
 };

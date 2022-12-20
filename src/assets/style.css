@@ -24,10 +24,10 @@
     @apply after:absolute after:opacity-0 hover:after:opacity-100 after:h-0.5 after:w-1 hover:after:w-full after:left-0 after:duration-500 after:bg-green-400 sm:after:-bottom-3.5 after:-bottom-2.5;
   }
   .btn {
-    @apply px-8 bg-white text-green-400 font-semibold text-lg border border-green-100 rounded-md shadow-sm hover:bg-green-400 hover:text-white focus:bg-green-400 focus:text-white duration-300 hover:scale-105 focus:scale-105;
+    @apply px-3 md:px-8 bg-white text-green-400 font-semibold text-sm md:text-lg border border-green-100 rounded-md shadow-sm hover:bg-green-400 hover:text-white focus:bg-green-400 focus:text-white duration-300 hover:scale-105 focus:scale-105;
   }
   .inputStyle {
-    @apply bg-white py-3 px-4 rounded-md w-full shadow-sm focus:outline-none border border-green-100 hover:border-green-200 focus:border-green-200 text-gray-700 placeholder:text-gray-300;
+    @apply bg-white py-1.5 md:py-3 px-4 rounded-md w-full shadow-sm focus:outline-none border border-green-100 hover:border-green-200 focus:border-green-200 text-gray-700 placeholder:text-gray-300;
   }
   .colTitle {
     @apply absolute w-full left-0 top-0 border-b py-3 rounded-t  text-center text-2xl text-gray-600 z-10;

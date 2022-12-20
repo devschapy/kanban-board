@@ -33,7 +33,7 @@ const TaskManage = () => {
             <Header />
             <CreateTask onTaskAdd={createNewTaskHandler} />
 
-            <div className={"flex justify-center gap-10"}>
+            <div className={"container grid md:grid-cols-3 gap-4 md:gap-3 xl:gap-10 pb-3"}>
                 {statuses.map(s => {
                     return (
                         <div key={s.status} className={"relative bg-gray-50 rounded-md pt-16 px-4 py-2 shadow-md "}>
