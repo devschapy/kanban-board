@@ -18,9 +18,8 @@ const CreateTask = ({ onTaskAdd }) => {
 
   return (
     <form className="container py-6 space-y-3 md:space-y-6 pt-14 md:pt-20" onSubmit={submitHandler}>
-      <h2 className="text-center text-gray-700 font-bold text-xl md:text-3xl">
-        Create Your Tasks
-      </h2>
+      <h2 className="flex gap-4 justify-center text-gray-700 font-bold text-xl md:text-3xl">
+        <p className="rotate-6">Create</p><p className="-rotate-6">Your</p><p className="rotate-6">Tasks</p></h2>
 
       <div className="flex justify-center gap-2 md:gap-4">
         <Input
